@@ -16,7 +16,7 @@ public class AccountingLedger {
 
     private static final String FILE_NAME = "transactions.csv";
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ISO_LOCAL_DATE; // yyyy-MM-dd
-    private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ISO_LOCAL_TIME; // HH:mm:ss. Optional: .truncatedTo(ChronoUnit.SECONDS);
+    private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ISO_LOCAL_TIME; // HH:mm:ss.
 
     private static ArrayList<Transaction> allTransactions = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
