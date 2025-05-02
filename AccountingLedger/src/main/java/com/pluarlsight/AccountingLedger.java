@@ -37,10 +37,7 @@ public class AccountingLedger {
         if (!file.exists()) {
             try {
                 file.createNewFile();
-                // Optional: Write header if you want one (but parsing needs to skip it)
-                // try (PrintWriter writer = new PrintWriter(new FileWriter(FILE_NAME))) {
-                //     writer.println("date|time|description|vendor|amount");
-                // }
+            
                 System.out.println("transactions.csv created.");
             } catch (IOException e) {
                 System.err.println("Error creating transactions file: " + e.getMessage());
@@ -52,7 +49,7 @@ public class AccountingLedger {
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                // Basic check to avoid empty lines or a potential header
+                // check to avoid empty lines or a potential header
                 if (!line.trim().isEmpty() && line.contains("|")) {
                     Transaction transaction = Transaction.fromCsvString(line);
                     if (transaction != null) {
@@ -69,7 +66,7 @@ public class AccountingLedger {
 
     public static void saveTransaction(Transaction transaction) {
         // Append new transaction to file
-        try (PrintWriter writer = new PrintWriter(new FileWriter(FILE_NAME, true))) { // true for append mode
+        try (PrintWriter writer = new PrintWriter(new FileWriter(FILE_NAME, true))) { // true for append
             writer.println(transaction.toCsvString());
         } catch (IOException e) {
             System.err.println("Error saving transaction: " + e.getMessage());
